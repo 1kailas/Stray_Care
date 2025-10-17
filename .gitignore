@@ -1,0 +1,107 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+**/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Build outputs
+dist/
+frontend/dist/
+backend/target/
+build/
+*.local
+out/
+
+# Uploads
+backend/uploads/
+uploads/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+/tmp/*.log
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Vite
+.vite/
+.cache/
+vite.config.ts.timestamp-*
+
+# Development docs (keep only essential ones)
+*_COMPLETE.md
+*_FIXED.md
+*_PROGRESS.md
+*_SUMMARY.md
+*_GUIDE.md
+*_DOCUMENTATION.md
+*_IMPROVEMENTS.md
+*_SOLUTION.md
+*_UPDATES.md
+*_FLOWS.md
+*_FIXES.md
+
+# Old/Backup files
+*_old.*
+*_OLD.*
+*.backup
+*.bak
+src_old/
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+
+# Scripts (keep only start/stop scripts)
+cleanup.sh
+git-cleanup.sh
