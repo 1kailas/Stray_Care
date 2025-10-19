@@ -70,7 +70,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
+# Keep maven wrapper files for deployment
+# .mvn/wrapper/maven-wrapper.jar
 
 # Vite
 .vite/
