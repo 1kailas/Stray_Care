@@ -3,21 +3,17 @@ FROM maven:3.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-# Copy Maven wrapper files first (from backend directory)
-COPY backend/.mvn .mvn
-COPY backend/mvnw .
-COPY backend/mvnw.cmd .
+# Copy entire backend directory
+COPY backend/ .
 
 # Make mvnw executable
 RUN chmod +x mvnw
 
-# Copy pom.xml and download dependencies
-COPY backend/pom.xml .
-RUN ./mvnw dependency:go-offline
+# Download dependencies
+RUN ./mvnw dependency:go-offline -B
 
-# Copy source code and build
-COPY backend/src ./src
-RUN ./mvnw clean package -DskipTests
+# Build the application
+RUN ./mvnw clean package -DskipTests -B
 
 # Production stage
 FROM eclipse-temurin:21-jre-alpine
