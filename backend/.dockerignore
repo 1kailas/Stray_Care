@@ -38,3 +38,8 @@ logs/
 .git/
 .gitignore
 README.md
+
+# Scripts (exclude local dev scripts)
+start.sh
+../start.sh
+*.sh

@@ -1,6 +1,6 @@
 [build]
 builder = "DOCKERFILE"
-dockerfilePath = "./Dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
 startCommand = "java -jar target/stray-dogcare-backend-1.0.0.jar"
