@@ -1,0 +1,24 @@
+# Exclude everything except backend
+*
+!backend/
+
+# Exclude from backend
+backend/target/
+backend/uploads/
+backend/.env
+
+# Exclude dev scripts
+start.sh
+*.sh
+
+# Exclude frontend
+frontend/
+node_modules/
+
+# Exclude docs
+*.md
+!backend/README.md
+
+# Exclude git
+.git/
+.gitignore
