@@ -1,24 +1,45 @@
-# Exclude everything except backend
-*
-!backend/
-
-# Exclude from backend
+# Development files
 backend/target/
 backend/uploads/
 backend/.env
+backend/.env.*
 
-# Exclude dev scripts
+# Scripts that interfere with Railway
 start.sh
 *.sh
 
-# Exclude frontend
-frontend/
+# Frontend files
 node_modules/
+dist/
+build/
+.next/
 
-# Exclude docs
-*.md
-!backend/README.md
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+*.swp
+*.swo
 
-# Exclude git
+# Git files
 .git/
 .gitignore
+.gitattributes
+
+# Documentation (keep backend README)
+/*.md
+ARCHITECTURE.md
+SETUP_GUIDE.md
+TROUBLESHOOTING.md
+DEPLOYMENT_SUMMARY.md
+DEPLOY.md
+RAILWAY_SETUP.md
+
+# Root level files not needed for backend build
+package.json
+vite.config.ts
+index.html
+tsconfig.json
+postcss.config.js
+tailwind.config.js
