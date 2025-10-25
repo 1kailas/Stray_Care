@@ -58,8 +58,6 @@ A comprehensive platform for stray dog rescue, adoption, and community engagemen
 
 - Dog report management with status tracking
 
-- Adoption request approval workflow🎨 Tailwind CSS + Radix UI📖 **See [INTEGRATION_SUMMARY.md](INTEGRATION_SUMMARY.md) for complete integration details**
-
 - Volunteer management and task assignment
 
 - User management and role assignment🔄 Zustand + React Query
@@ -462,23 +460,20 @@ application:| Layer | Technologies |
 
 
 
-### Volunteers| **[frontend/README.md](frontend/README.md)** | 📱 Frontend documentation |
-
 - `GET /api/volunteers` - Get all volunteers
 
 - `POST /api/volunteers` - Register as volunteer| **[backend/README.md](backend/README.md)** | ☕ Backend API docs |### MongoDB Atlas (Cloud)
 
 - `PATCH /api/volunteers/{id}/status` - Update status (Admin)
 
-| **[SUCCESS_SUMMARY.md](SUCCESS_SUMMARY.md)** | ✨ What's new & improved |1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 
 ### Volunteer Tasks
 
-- `GET /api/volunteer-tasks` - Get all tasks| **[COMPARISON.md](COMPARISON.md)** | 📊 Old vs New comparison |2. Get your connection string
+- `GET /api/volunteer-tasks` - Get all tasks
 
 - `GET /api/volunteer-tasks/my-tasks` - Get current user's tasks
 
-- `POST /api/volunteer-tasks` - Create task (Admin)| **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** | 🏗️ Architecture guide |3. Update `backend/src/main/resources/application.yml`:
+- `POST /api/volunteer-tasks` - Create task (Admin)
 
 - `PUT /api/volunteer-tasks/{id}` - Update task
 
@@ -712,87 +707,6 @@ For detailed troubleshooting, see `TROUBLESHOOTING.md`
 
 
 
-## 📖 Additional Documentation
-
-**Base URL**: `http://localhost:5000/api`### Adoptions
-
-- **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Detailed setup instructions
-
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions- `GET /api/adoptions` - Get all adoption requests
-
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - System architecture overview
-
-| Endpoint | Description |- `POST /api/adoptions` - Submit adoption application
-
-## 🤝 Contributing
-
-|----------|-------------|
-
-Contributions are welcome! Please follow these steps:
-
-| `/auth/*` | Authentication & registration |### Volunteers
-
-1. Fork the repository
-
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)| `/dog-reports/*` | Dog report management |- `GET /api/volunteers` - Get all volunteers
-
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-
-4. Push to the branch (`git push origin feature/amazing-feature`)| `/volunteers/*` | Volunteer operations |- `POST /api/volunteers` - Register as volunteer
-
-5. Open a Pull Request
-
-| `/adoptions/*` | Adoption system |- `PATCH /api/volunteers/{id}/status` - Update volunteer status
-
-## 📄 License
-
-| `/donations/*` | Donation handling |
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-| `/forum/*` | Community forum |### And many more endpoints for donations, forum, notifications, vaccinations...
-
-## 💬 Support
-
-| `/notifications/*` | User notifications |
-
-For support, email info@straydogcare.org or join our community forum.
-
-**📖 Full API documentation:** See backend README and controller files
-
-## 🙏 Acknowledgments
-
-## 📱 Responsive & Accessible
-
-- Figma Design: [Stray DogCare App UI Design](https://www.figma.com/design/3xaSPohHr6izMW5Fw6hCAS/Stray-DogCare-App-UI-Design)
-
-- UI Components: [Shadcn UI](https://ui.shadcn.com/)## 🎯 Usage
-
-- Icons: [Lucide Icons](https://lucide.dev/)
-
-- 📱 **Mobile**: Perfect on all phone sizes
-
----
-
-- 📱 **Tablet**: Optimized layout### Starting the Application
-
-**Made with ❤️ for stray dog welfare**  
-
-**Every dog deserves a second chance** 🐾- 💻 **Desktop**: Full-featured interface
-
-
-
-*Last Updated: October 17, 2025*  - ♿ **Accessible**: WCAG 2.1 Level AA compliant**Quick Start:**
-
-*Version: 2.0.0*  
-
-*Status: Production Ready* ✅- ⌨️ **Keyboard**: Full keyboard navigation```bash
-
-
-- 🔊 **Screen Readers**: Optimized support./start.sh
-
-```
-
 ## 🔒 Security Features
 
 **Manual Start:**
@@ -882,38 +796,6 @@ Frontend:           Backend:
 - **Backend won't start?** Check MongoDB is running## 🚀 Deployment
 
 
-
-## 🎯 Next Steps### Frontend (Vercel/Netlify)
-
-```bash
-
-### For Users:npm run build
-
-1. Read [QUICKSTART.md](QUICKSTART.md)# Deploy the 'dist' folder
-
-2. Run setup commands```
-
-3. Open http://localhost:5173
-
-4. Create an account & explore!### Backend (Heroku/Railway/Render)
-
-```bash
-
-### For Developers:cd backend
-
-1. Explore `frontend/src/` for code# Set environment variables on hosting platform
-
-2. Check `backend/src/` for API# Deploy with Node.js
-
-3. Read documentation```
-
-4. Start building features!
-
-## 📁 Project Structure
-
-## ✅ Status
-
-```
 
 ```├── src/                    # Frontend source code
 
