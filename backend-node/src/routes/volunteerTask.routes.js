@@ -1,14 +1,32 @@
-import express from 'express';
-import VolunteerTask from '../models/volunteerTask.model.js';
-import { authenticate, authorize } from '../middleware/auth.middleware.js';
+import express from "express";
+import VolunteerTask from "../models/volunteerTask.model.js";
+import { authenticate, authorize } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
 // Get all volunteer tasks
-router.get('/', authenticate, async (req, res, next) => {
+router.get(
+  "/count",
+  authenticate,
+  authorize("ADMIN"),
+  async (req, res, next) => {
+    try {
+      const count = await VolunteerTask.countDocuments();
+
+      res.json({
+        success: true,
+        data: { count },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+router.get("/", authenticate, async (req, res, next) => {
   try {
     const { volunteerId, status, priority, limit = 50, page = 1 } = req.query;
-    
+
     const query = {};
     if (volunteerId) query.volunteerId = volunteerId;
     if (status) query.status = status;
@@ -28,8 +46,39 @@ router.get('/', authenticate, async (req, res, next) => {
         total,
         page: parseInt(page),
         limit: parseInt(limit),
-        pages: Math.ceil(total / parseInt(limit))
-      }
+        pages: Math.ceil(total / parseInt(limit)),
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Get tasks for the current user
+router.get("/my-tasks/count", authenticate, async (req, res, next) => {
+  try {
+    const count = await VolunteerTask.countDocuments({
+      volunteerId: req.user.id,
+    });
+
+    res.json({
+      success: true,
+      data: { count },
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/my-tasks", authenticate, async (req, res, next) => {
+  try {
+    const tasks = await VolunteerTask.find({ volunteerId: req.user.id }).sort({
+      createdAt: -1,
+    });
+
+    res.json({
+      success: true,
+      data: tasks,
     });
   } catch (error) {
     next(error);
@@ -37,20 +86,62 @@ router.get('/', authenticate, async (req, res, next) => {
 });
 
 // Get task by ID
-router.get('/:id', authenticate, async (req, res, next) => {
+router.get(
+  "/volunteer/:volunteerId/count",
+  authenticate,
+  authorize("ADMIN"),
+  async (req, res, next) => {
+    try {
+      const count = await VolunteerTask.countDocuments({
+        volunteerId: req.params.volunteerId,
+      });
+
+      res.json({
+        success: true,
+        data: { count },
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+router.get(
+  "/volunteer/:volunteerId",
+  authenticate,
+  authorize("ADMIN"),
+  async (req, res, next) => {
+    try {
+      const tasks = await VolunteerTask.find({
+        volunteerId: req.params.volunteerId,
+      }).sort({
+        createdAt: -1,
+      });
+
+      res.json({
+        success: true,
+        data: tasks,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+router.get("/:id", authenticate, async (req, res, next) => {
   try {
     const task = await VolunteerTask.findById(req.params.id);
-    
+
     if (!task) {
       return res.status(404).json({
         success: false,
-        message: 'Task not found'
+        message: "Task not found",
       });
     }
 
     res.json({
       success: true,
-      data: task
+      data: task,
     });
   } catch (error) {
     next(error);
@@ -58,46 +149,51 @@ router.get('/:id', authenticate, async (req, res, next) => {
 });
 
 // Create volunteer task
-router.post('/', authenticate, authorize('ADMIN', 'VOLUNTEER'), async (req, res, next) => {
-  try {
-    const taskData = {
-      ...req.body,
-      assignedDate: new Date().toISOString()
-    };
+router.post(
+  "/",
+  authenticate,
+  authorize("ADMIN", "VOLUNTEER"),
+  async (req, res, next) => {
+    try {
+      const taskData = {
+        ...req.body,
+        assignedDate: new Date().toISOString(),
+      };
 
-    const task = new VolunteerTask(taskData);
-    await task.save();
+      const task = new VolunteerTask(taskData);
+      await task.save();
 
-    res.status(201).json({
-      success: true,
-      message: 'Task created successfully',
-      data: task
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+      res.status(201).json({
+        success: true,
+        message: "Task created successfully",
+        data: task,
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 
 // Update volunteer task
-router.put('/:id', authenticate, async (req, res, next) => {
+router.put("/:id", authenticate, async (req, res, next) => {
   try {
     const task = await VolunteerTask.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
 
     if (!task) {
       return res.status(404).json({
         success: false,
-        message: 'Task not found'
+        message: "Task not found",
       });
     }
 
     res.json({
       success: true,
-      message: 'Task updated successfully',
-      data: task
+      message: "Task updated successfully",
+      data: task,
     });
   } catch (error) {
     next(error);
@@ -105,32 +201,32 @@ router.put('/:id', authenticate, async (req, res, next) => {
 });
 
 // Update task status
-router.patch('/:id/status', authenticate, async (req, res, next) => {
+router.patch("/:id/status", authenticate, async (req, res, next) => {
   try {
     const { status } = req.body;
 
     const updateData = { status };
-    if (status === 'COMPLETED') {
+    if (status === "COMPLETED") {
       updateData.completedDate = new Date().toISOString();
     }
 
     const task = await VolunteerTask.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { new: true }
+      { new: true },
     );
 
     if (!task) {
       return res.status(404).json({
         success: false,
-        message: 'Task not found'
+        message: "Task not found",
       });
     }
 
     res.json({
       success: true,
-      message: 'Task status updated',
-      data: task
+      message: "Task status updated",
+      data: task,
     });
   } catch (error) {
     next(error);
@@ -138,24 +234,29 @@ router.patch('/:id/status', authenticate, async (req, res, next) => {
 });
 
 // Delete volunteer task
-router.delete('/:id', authenticate, authorize('ADMIN'), async (req, res, next) => {
-  try {
-    const task = await VolunteerTask.findByIdAndDelete(req.params.id);
+router.delete(
+  "/:id",
+  authenticate,
+  authorize("ADMIN"),
+  async (req, res, next) => {
+    try {
+      const task = await VolunteerTask.findByIdAndDelete(req.params.id);
 
-    if (!task) {
-      return res.status(404).json({
-        success: false,
-        message: 'Task not found'
+      if (!task) {
+        return res.status(404).json({
+          success: false,
+          message: "Task not found",
+        });
+      }
+
+      res.json({
+        success: true,
+        message: "Task deleted successfully",
       });
+    } catch (error) {
+      next(error);
     }
-
-    res.json({
-      success: true,
-      message: 'Task deleted successfully'
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+  },
+);
 
 export default router;
