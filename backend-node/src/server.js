@@ -58,13 +58,24 @@ if (process.env.NODE_ENV !== 'production') {
 const uploadsDir = path.join(__dirname, '..', process.env.UPLOAD_DIR || 'uploads');
 app.use('/uploads', express.static(uploadsDir));
 
-// Health check endpoint
+
+// Health check endpoints
 app.get('/actuator/health', (req, res) => {
   res.json({ status: 'UP' });
 });
 
 app.get('/health', (req, res) => {
   res.json({ status: 'UP', timestamp: new Date().toISOString() });
+});
+
+// Improved health check for monitoring
+app.get('/api/health', (req, res) => {
+  const dbState = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    db: dbState
+  });
 });
 
 // API Routes
