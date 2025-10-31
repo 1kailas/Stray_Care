@@ -135,10 +135,16 @@ export function Layout({ children }: LayoutProps) {
         )}
       </header>
 
+
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
         {children}
       </main>
+
+      {/* Footer with creator name */}
+      <footer className="w-full text-center py-4 text-xs text-muted-foreground bg-white/80 border-t">
+        Created by <span className="font-semibold text-primary">kailasnath T</span>
+      </footer>
 
       {/* AI Chatbot - Always visible on all pages */}
       <AIChatbot />
