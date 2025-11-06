@@ -1,5 +1,4 @@
 package com.straydogcare.controller;
-
 import com.straydogcare.dto.DashboardStatsResponse;
 import com.straydogcare.dto.ActivityFeedResponse;
 import com.straydogcare.dto.ChartDataResponse;

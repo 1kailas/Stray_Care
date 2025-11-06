@@ -1,5 +1,4 @@
 package com.straydogcare.service;
-
 import com.straydogcare.model.Donation;
 import com.straydogcare.model.Notification;
 import com.straydogcare.repository.DonationRepository;
