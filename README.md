@@ -1,150 +1,103 @@
-# 🐾 Stray DogCare - Full Stack Application# 🐾 Stray DogCare - Complete Application
+# 🐕 Stray DogCare - Full Stack Application
 
-
-
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)]()# 🐕 Stray DogCare - Full Stack Application
-
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)]()
 [![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%2B%20TypeScript-blue)]()
-
-[![Backend](https://img.shields.io/badge/Backend-Spring%20Boot%203-green)]()[![Status](https://img.shields.io/badge/Status-Production%20Ready-success)]()
-
+[![Backend](https://img.shields.io/badge/Backend-Spring%20Boot%203-green)]()
 [![Database](https://img.shields.io/badge/Database-MongoDB-brightgreen)]()
 
-[![Frontend](https://img.shields.io/badge/Frontend-React%2018%20%2B%20TypeScript-blue)]()A comprehensive platform for stray dog rescue, adoption, and community engagement.
+A comprehensive platform for stray dog rescue, adoption, and community engagement with **exciting new features**!
 
-A comprehensive platform for stray dog rescue, adoption, and community engagement.
+## 🎉 NEW FEATURES (v2.1.0)
 
-[![Backend](https://img.shields.io/badge/Backend-Spring%20Boot%203-green)]()
+We've added powerful new features to enhance the platform:
 
-## 🌟 Features
+- ⭐ **[Success Stories](./NEW_FEATURES.md#1--success-stories-page)** - Inspiring before/after adoption transformations
+- 🚨 **[Emergency SOS](./NEW_FEATURES.md#2--emergency-sos-system)** - Critical rescue reporting with 15-30 min response
+- 💝 **[Sponsorship Program](./NEW_FEATURES.md#3--sponsorship-program)** - Support dogs monthly without adoption
+- 📅 **[Events & Campaigns](./NEW_FEATURES.md#4--events--campaigns)** - Join adoption drives and community events
+- 🌗 **[Dark Mode](./NEW_FEATURES.md#5--dark-mode-support)** - Eye-friendly theme with system preference detection
+
+**[📖 Read Full New Features Documentation](./NEW_FEATURES.md)** | **[🚀 Quick Start Guide](./QUICK_START_NEW_FEATURES.md)**
+
+## 🌟 All Features
 
 **Status:** ✅ Fully Integrated | Frontend ↔️ Backend Connected | Authentication Working
 
 ### 🎯 Core Features
 
-- **Dog Report System** - Report and track stray dogs with geolocation and photo uploadsA comprehensive platform for stray dog rescue, adoption, and community engagement with a **brand new modern frontend**!
-
+- **Dog Report System** - Report and track stray dogs with geolocation and photo uploads
+- **Emergency SOS** - 🆕 Critical rescue reporting with immediate team alert
 - **Adoption Portal** - Browse adoptable dogs and submit applications
-
-- **Volunteer Management** - Register volunteers and assign tasks## 🎉 Latest Updates
-
+- **Success Stories** - 🆕 Inspiring before/after adoption transformations
+- **Sponsorship Program** - 🆕 Support dogs monthly without adoption
+- **Volunteer Management** - Register volunteers and assign tasks
 - **Donation System** - Accept and track donations with real-time statistics
-
-- **Community Forum** - Discussion board for community engagement## 🎉 What's New: Completely Redesigned Frontend!
-
+- **Events & Campaigns** - 🆕 Join adoption drives and community events
+- **Community Forum** - Discussion board for community engagement
 - **Vaccination Tracker** - Track vaccination schedules and records
-
-- **Interactive Map** - View dog reports on an interactive map with clustering- ✅ **Authentication System** - Complete JWT-based login and registration
-
+- **Interactive Map** - View dog reports on an interactive map with clustering
 - **Real-time Notifications** - Stay updated with important alerts
+- **AI Chatbot** - Get instant help and information about dog care
+- **Dark Mode** - 🆕 Eye-friendly theme with system preference detection
 
-- **AI Chatbot** - Get instant help and information about dog careThe frontend has been **completely rebuilt** from scratch with modern technologies:- ✅ **Dashboard** - Real-time statistics from backend
-
-
-
-### 👥 User Roles & Access- ✅ **Dog Reports** - Submit and manage reports with API
+### 👥 User Roles & Access
 
 - **User** - Report dogs, apply for adoptions, make donations, participate in forum
-
-- **Volunteer** - All user privileges + manage reports and view assigned tasks```- ✅ **Adoptions** - Browse and apply for dog adoptions
-
+- **Volunteer** - All user privileges + manage reports and view assigned tasks
 - **Admin** - Full system access with comprehensive admin dashboard
-
-✨ React 18 + TypeScript 5- ✅ **View Cases** - Real-time case management with status updates
 
 ### 🎨 Admin Dashboard Features
 
-- System overview with real-time statistics⚡ Vite 6 Build Tool  
-
+- System overview with real-time statistics
 - Dog report management with status tracking
-
 - Volunteer management and task assignment
-
-- User management and role assignment🔄 Zustand + React Query
-
+- User management and role assignment
 - Donation tracking and analytics
-
-- Advanced analytics and reporting📱 Mobile-First Responsive## 🎨 Features
-
+- Advanced analytics and reporting
 - System settings and configuration
-
-♿ WCAG 2.1 Accessible
 
 ## 🛠️ Tech Stack
 
-🚀 30% Smaller Bundle- **Dog Report System** - Report and track stray dogs with geolocation
-
 ### Frontend
 
-- **Framework**: React 18 with TypeScript 5⚡ 34% Faster Builds- **Volunteer Management** - Register, manage, and assign volunteers
-
+- **Framework**: React 18 with TypeScript 5
 - **Build Tool**: Vite 6
-
-- **Styling**: Tailwind CSS + Radix UI Components```- **Adoption Portal** - List and manage dog adoptions
-
+- **Styling**: Tailwind CSS + Radix UI Components
 - **State Management**: Zustand + TanStack React Query
-
-- **Routing**: React Router v6- **Donation System** - Accept and track donations
-
+- **Routing**: React Router v6
 - **Forms**: React Hook Form + Zod validation
-
-- **Charts**: Recharts## 🚀 Quick Start (3 Simple Steps)- **Community Forum** - Discussion board for community engagement
-
+- **Charts**: Recharts
 - **Icons**: Lucide React
-
-- **Notifications**: Sonner (Toast)- **Vaccination Tracker** - Track vaccination schedules and records
-
+- **Notifications**: Sonner (Toast)
 - **Maps**: Leaflet with React-Leaflet
+- **Animations**: Framer Motion
+- **AI**: Groq API for AI chatbot
 
-- **AI**: Groq API for AI chatbot### 1. Setup Frontend- **Real-time Notifications** - Stay updated with important alerts
-
-
-
-### Backend```bash- **Interactive Map** - View dog reports on a map
+### Backend
 
 - **Framework**: Spring Boot 3.x
-
-- **Language**: Java 21cd frontend- **User Authentication** - Secure login with role-based access
-
+- **Language**: Java 21
 - **Security**: Spring Security with JWT authentication
-
-- **Database**: MongoDB (NoSQL)npm install
-
+- **Database**: MongoDB (NoSQL)
 - **ORM**: Spring Data MongoDB
-
-- **Build Tool**: Maven```## 🎨 Color Redesign
-
+- **Build Tool**: Maven
 - **Libraries**: Lombok, Jackson, Jakarta Validation
-
-
 
 ### Database
 
-- **MongoDB 4.4+** (Local or Atlas Cloud)### 2. Start BackendThe app features a modern blue-green color palette:
-
+- **MongoDB 4.4+** (Local or Atlas Cloud)
 - Collections: users, dogReports, adoptions, volunteers, donations, forumPosts, vaccinations, notifications, volunteerTasks
-
-```bash- **Primary**: `#4A90E2` (Professional Blue)
 
 ## 🚀 Quick Start
 
-cd backend- **Secondary**: `#67B26F` (Growth Green)
-
 ### Prerequisites
 
-- Java 17+ (JDK)./mvnw spring-boot:run- Clean, trustworthy design suitable for animal welfare
-
+- Java 17+ (JDK)
 - Node.js 18+
-
-- MongoDB 4.4+ (running locally or MongoDB Atlas account)# Runs on http://localhost:5000
-
+- MongoDB 4.4+ (running locally or MongoDB Atlas account)
 - Maven 3.6+
 
-```## 🛠️ Tech Stack
-
 ### Option 1: Automated Startup (Recommended)
-
-
 
 ```bash
 

@@ -1,39 +1,59 @@
-import { ReactNode } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { 
-  Home, AlertCircle, FileText, Heart, Users, DollarSign, 
-  MessageSquare, BookOpen, Bell, User, Map, Syringe, 
-  Phone, LogOut, Menu
-} from 'lucide-react'
-import { useAuthStore } from '@/store/auth'
-import { Button } from '@/components/ui/button'
-import { AIChatbot } from '@/components/AIChatbot'
-import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { ReactNode } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  Home,
+  AlertCircle,
+  FileText,
+  Heart,
+  Users,
+  DollarSign,
+  MessageSquare,
+  BookOpen,
+  Bell,
+  User,
+  Map,
+  Syringe,
+  Phone,
+  LogOut,
+  Menu,
+  Star,
+  AlertTriangle,
+  HandHeart,
+  Calendar,
+} from 'lucide-react';
+import { useAuthStore } from '@/store/auth';
+import { Button } from '@/components/ui/button';
+import { AIChatbot } from '@/components/AIChatbot';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 interface LayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: Home },
   { name: 'Report Dog', href: '/report', icon: AlertCircle },
+  { name: 'Emergency SOS', href: '/emergency-sos', icon: AlertTriangle },
   { name: 'View Cases', href: '/cases', icon: FileText },
   { name: 'Adoption', href: '/adoption', icon: Heart },
+  { name: 'Success Stories', href: '/success-stories', icon: Star },
+  { name: 'Sponsorship', href: '/sponsorship', icon: HandHeart },
   { name: 'Volunteer', href: '/volunteer', icon: Users },
   { name: 'My Tasks', href: '/volunteer-tasks', icon: FileText },
   { name: 'Donations', href: '/donations', icon: DollarSign },
+  { name: 'Events', href: '/events', icon: Calendar },
   { name: 'Forum', href: '/forum', icon: MessageSquare },
   { name: 'Education', href: '/education', icon: BookOpen },
   { name: 'Map', href: '/map', icon: Map },
   { name: 'Vaccination', href: '/vaccination', icon: Syringe },
   { name: 'Contact', href: '/contact', icon: Phone },
-]
+];
 
 export function Layout({ children }: LayoutProps) {
-  const location = useLocation()
-  const { logout } = useAuthStore()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation();
+  const { logout } = useAuthStore();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -56,23 +76,23 @@ export function Layout({ children }: LayoutProps) {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navigation.slice(0, 7).map((item) => {
-              const isActive = location.pathname === item.href
-              const Icon = item.icon
+              const isActive = location.pathname === item.href;
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                     isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                   )}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.name}</span>
                 </Link>
-              )
+              );
             })}
           </nav>
 
@@ -111,35 +131,32 @@ export function Layout({ children }: LayoutProps) {
           <div className="lg:hidden border-t bg-background p-4">
             <nav className="space-y-1">
               {navigation.map((item) => {
-                const isActive = location.pathname === item.href
-                const Icon = item.icon
+                const isActive = location.pathname === item.href;
+                const Icon = item.icon;
                 return (
                   <Link
                     key={item.name}
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                      'flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                       isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                     )}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{item.name}</span>
                   </Link>
-                )
+                );
               })}
             </nav>
           </div>
         )}
       </header>
 
-
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6">
-        {children}
-      </main>
+      <main className="container mx-auto px-4 py-6">{children}</main>
 
       {/* Footer with creator name */}
       <footer className="w-full text-center py-4 text-xs text-muted-foreground bg-white/80 border-t">
@@ -149,5 +166,5 @@ export function Layout({ children }: LayoutProps) {
       {/* AI Chatbot - Always visible on all pages */}
       <AIChatbot />
     </div>
-  )
+  );
 }

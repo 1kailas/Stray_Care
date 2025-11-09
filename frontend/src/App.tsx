@@ -1,87 +1,69 @@
-import { useEffect, lazy, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuthStore } from "./store/auth";
-import { Layout } from "./components/layout/Layout";
-import { AuthLayout } from "./components/layout/AuthLayout";
-import { AdminLayout } from "./components/layout/AdminLayout";
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { LoadingScreen } from "./components/ui/LoadingScreen";
+import { useEffect, lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthStore } from './store/auth';
+import { Layout } from './components/layout/Layout';
+import { AuthLayout } from './components/layout/AuthLayout';
+import { AdminLayout } from './components/layout/AdminLayout';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { LoadingScreen } from './components/ui/LoadingScreen';
 
 // Eagerly load auth pages for faster initial login
-import { Login } from "./pages/auth/Login";
-import { Register } from "./pages/auth/Register";
+import { Login } from './pages/auth/Login';
+import { Register } from './pages/auth/Register';
 
 // Lazy load user pages
-const Dashboard = lazy(() =>
-  import("./pages/Dashboard").then((m) => ({ default: m.Dashboard })),
-);
-const ReportDog = lazy(() =>
-  import("./pages/ReportDog").then((m) => ({ default: m.ReportDog })),
-);
-const ViewCases = lazy(() =>
-  import("./pages/ViewCases").then((m) => ({ default: m.ViewCases })),
-);
-const Adoption = lazy(() =>
-  import("./pages/Adoption").then((m) => ({ default: m.Adoption })),
-);
-const Volunteer = lazy(() =>
-  import("./pages/Volunteer").then((m) => ({ default: m.Volunteer })),
-);
+const Dashboard = lazy(() => import('./pages/Dashboard').then((m) => ({ default: m.Dashboard })));
+const ReportDog = lazy(() => import('./pages/ReportDog').then((m) => ({ default: m.ReportDog })));
+const ViewCases = lazy(() => import('./pages/ViewCases').then((m) => ({ default: m.ViewCases })));
+const Adoption = lazy(() => import('./pages/Adoption').then((m) => ({ default: m.Adoption })));
+const Volunteer = lazy(() => import('./pages/Volunteer').then((m) => ({ default: m.Volunteer })));
 const VolunteerTasks = lazy(() =>
-  import("./pages/VolunteerTasks").then((m) => ({ default: m.VolunteerTasks })),
+  import('./pages/VolunteerTasks').then((m) => ({ default: m.VolunteerTasks }))
 );
-const Donations = lazy(() =>
-  import("./pages/Donations").then((m) => ({ default: m.Donations })),
-);
-const Forum = lazy(() =>
-  import("./pages/Forum").then((m) => ({ default: m.Forum })),
-);
-const Education = lazy(() =>
-  import("./pages/Education").then((m) => ({ default: m.Education })),
-);
+const Donations = lazy(() => import('./pages/Donations').then((m) => ({ default: m.Donations })));
+const Forum = lazy(() => import('./pages/Forum').then((m) => ({ default: m.Forum })));
+const Education = lazy(() => import('./pages/Education').then((m) => ({ default: m.Education })));
 const Notifications = lazy(() =>
-  import("./pages/Notifications").then((m) => ({ default: m.Notifications })),
+  import('./pages/Notifications').then((m) => ({ default: m.Notifications }))
 );
-const Profile = lazy(() =>
-  import("./pages/Profile").then((m) => ({ default: m.Profile })),
-);
-const MapView = lazy(() =>
-  import("./pages/MapView").then((m) => ({ default: m.MapView })),
-);
+const Profile = lazy(() => import('./pages/Profile').then((m) => ({ default: m.Profile })));
+const MapView = lazy(() => import('./pages/MapView').then((m) => ({ default: m.MapView })));
 const Vaccination = lazy(() =>
-  import("./pages/Vaccination").then((m) => ({ default: m.Vaccination })),
+  import('./pages/Vaccination').then((m) => ({ default: m.Vaccination }))
 );
-const Contact = lazy(() =>
-  import("./pages/Contact").then((m) => ({ default: m.Contact })),
+const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })));
+const SuccessStories = lazy(() =>
+  import('./pages/SuccessStories').then((m) => ({ default: m.default }))
 );
+const EmergencySOS = lazy(() =>
+  import('./pages/EmergencySOS').then((m) => ({ default: m.default }))
+);
+const Sponsorship = lazy(() => import('./pages/Sponsorship').then((m) => ({ default: m.default })));
+const Events = lazy(() => import('./pages/Events').then((m) => ({ default: m.default })));
 
 // Lazy load admin pages
 const AdminOverview = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminOverview })),
+  import('./pages/admin').then((m) => ({ default: m.AdminOverview }))
 );
 const AdminDogReports = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminDogReports })),
+  import('./pages/admin').then((m) => ({ default: m.AdminDogReports }))
 );
 const AdminAdoptions = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminAdoptions })),
+  import('./pages/admin').then((m) => ({ default: m.AdminAdoptions }))
 );
 const AdminVolunteers = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminVolunteers })),
+  import('./pages/admin').then((m) => ({ default: m.AdminVolunteers }))
 );
-const AdminDogs = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminDogs })),
-);
-const AdminUsers = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminUsers })),
-);
+const AdminDogs = lazy(() => import('./pages/admin').then((m) => ({ default: m.AdminDogs })));
+const AdminUsers = lazy(() => import('./pages/admin').then((m) => ({ default: m.AdminUsers })));
 const AdminDonations = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminDonations })),
+  import('./pages/admin').then((m) => ({ default: m.AdminDonations }))
 );
 const AdminAnalytics = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminAnalytics })),
+  import('./pages/admin').then((m) => ({ default: m.AdminAnalytics }))
 );
 const AdminSettings = lazy(() =>
-  import("./pages/admin").then((m) => ({ default: m.AdminSettings })),
+  import('./pages/admin').then((m) => ({ default: m.AdminSettings }))
 );
 
 function App() {
@@ -108,7 +90,7 @@ function App() {
   }
 
   // ADMIN USERS - Only show admin dashboard
-  if (user.role === "ADMIN") {
+  if (user.role === 'ADMIN') {
     return (
       <Suspense fallback={<LoadingScreen />}>
         <Routes>
@@ -212,6 +194,10 @@ function App() {
           <Route path="/map" element={<MapView />} />
           <Route path="/vaccination" element={<Vaccination />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/emergency-sos" element={<EmergencySOS />} />
+          <Route path="/sponsorship" element={<Sponsorship />} />
+          <Route path="/events" element={<Events />} />
 
           {/* Block access to admin routes for regular users */}
           <Route
